@@ -1,0 +1,32 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+.btn-reload {
+  position: relative;
+  top: 8px;
+}
+
+form input {
+  font-size: 16px;
+}
+
+.tab-content {
+  padding: 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-reload {
+    right: 15px;
+  }
+
+  .panel-xs-stacked > .row > .col-sm-6:last-child .form-group {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .panel-xs-stacked .form-group {
+    margin-bottom: 0;
+  }
+}

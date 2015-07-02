@@ -1,0 +1,131 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<main>
+
+  <ul class="nav nav-tabs site-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#remote" aria-controls="remote" role="tab" data-toggle="tab">Remote</a></li>
+    <li role="presentation"><a href="#say" aria-controls="say" role="tab" data-toggle="tab">Say</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="remote">
+      <form action="/remote" method="post" class="form-remote">
+        <div class="panel panel-default">
+          <div class="panel-heading">TV</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-6">
+                <button class="btn btn-block btn-success" data-loading-text="..." type="button" data-action="tv-power">Power</button>
+              </div>
+
+              <div class="col-xs-6">
+                <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="tv-input">Toggle Input</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Receiver</div>
+          <div class="panel-body panel-xs-stacked">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-input-tv">TV</button>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-input-ps3">PS3</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-input-mac">Mac</button>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-input-chromecast">Cast</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Volume</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-4">
+                <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-mute">Mute</button>
+              </div>
+
+              <div class="col-xs-4">
+                <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-vol-up">Vol +</button>
+              </div>
+
+              <div class="col-xs-4">
+                <button class="btn btn-block btn-default" data-loading-text="..." type="button" data-action="receiver-vol-down">Vol -</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="say">
+      <form action="/say" method="post" class="form-say">
+        <div class="form-group">
+          <input type="text" class="form-control" name="message" placeholder="Message" required>
+        </div>
+
+        <div class="form-group">
+          <select class="form-control" name="voice">
+            <option value="Alex" selected>Alex (Default)</option>
+            <option value="Agnes">Agnes</option>
+            <option value="Albert">Albert</option>
+            <option value="Bad News">Bad News</option>
+            <option value="Bahh">Bahh</option>
+            <option value="Bells">Bells</option>
+            <option value="Boing">Boing</option>
+            <option value="Bruce">Bruce</option>
+            <option value="Cellos">Cellos</option>
+            <option value="Deranged">Deranged</option>
+            <option value="Fred">Fred</option>
+            <option value="Good News">Good News</option>
+            <option value="Hysterical">Hysterical</option>
+            <option value="Junior">Junior</option>
+            <option value="Kathy">Kathy</option>
+            <option value="Pipe Organ">Pipe Organ</option>
+            <option value="Princess">Princess</option>
+            <option value="Ralph">Ralph</option>
+            <option value="Trinoids">Trinoids</option>
+            <option value="Vicki">Vicki</option>
+            <option value="Victoria">Victoria</option>
+            <option value="Whisper">Whisper</option>
+            <option value="Zarvox">Zarvox</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-lg btn-block btn-primary" data-loading-text="Sending..." type="submit" autocomplete="off">Say It!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

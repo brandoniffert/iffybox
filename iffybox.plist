@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>KeepAlive</key>
+  <true/>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>Label</key>
+  <string>IFFYBOX</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/iffybox/iffybox/venv/bin/uwsgi</string>
+    <string>--ini</string>
+    <string>/Users/iffybox/iffybox/iffybox.ini</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/iffybox/iffybox</string>
+</dict>
+</plist>
