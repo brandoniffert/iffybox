@@ -1,5 +1,5 @@
 import subprocess
-from .remote import remote as mote
+from .remote.remote import Remote
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ def index():
 @app.route('/remote', methods=['POST'])
 def remote():
     action = request.form.get('action')
-    remote = mote.Remote()
+    remote = Remote()
 
     if action == 'tv-power':
         remote.tv_toggle_power()

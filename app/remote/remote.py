@@ -1,7 +1,7 @@
 from time import sleep
 import serial
 import irtoy
-from . import rxv
+from .rxv import RXV
 from . import codes
 
 
@@ -12,7 +12,7 @@ class Remote:
     def __init__(self):
         self.device = serial.Serial(self.SERIAL_DEVICE)
         self.toy = irtoy.IrToy(self.device)
-        self.receiver = rxv.RXV()
+        self.receiver = RXV()
 
     def __exit__(self):
         self.device.close()
