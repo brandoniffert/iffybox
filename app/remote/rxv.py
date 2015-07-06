@@ -13,7 +13,7 @@ Input = '<Input><Input_Sel>{input_name}</Input_Sel></Input>'
 InputSelItem = '<Input><Input_Sel_Item>{input_name}</Input_Sel_Item></Input>'
 VolumeLevel = '<Volume><Lvl>{value}</Lvl></Volume>'
 VolumeLevelValue = '<Val>{val}</Val><Exp>{exp}</Exp><Unit>{unit}</Unit>'
-MuteState = '<Volume><Mute>{state}</Mute></Volume></Main_Zone>'
+MuteState = '<Volume><Mute>{state}</Mute></Volume>'
 
 
 class RXV(object):
@@ -79,8 +79,7 @@ class RXV(object):
     @property
     def mute(self):
         response = self._request('GET', BasicStatusGet)
-        mute = response.find("Main_Zone/Basic_Status/Volume/Mute").text
-        return mute
+        return response.find("Main_Zone/Basic_Status/Volume/Mute").text
 
     @mute.setter
     def mute(self, state):
