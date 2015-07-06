@@ -7,6 +7,7 @@ from . import codes
 
 class Remote:
     SLEEP_DUR = 0.2
+    VOL_STEP = 3
     SERIAL_DEVICE = '/dev/cu.usbmodem00000001'
 
     def __init__(self):
@@ -51,11 +52,11 @@ class Remote:
 
     def receiver_vol_up(self):
         current_volume = self.receiver.volume
-        self.receiver.volume = current_volume + 1
+        self.receiver.volume = current_volume + self.VOL_STEP
 
     def receiver_vol_down(self):
         current_volume = self.receiver.volume
-        self.receiver.volume = current_volume - 1
+        self.receiver.volume = current_volume - self.VOL_STEP
 
     def receiver_input_tv(self):
         self.receiver.input = 'AV1'
