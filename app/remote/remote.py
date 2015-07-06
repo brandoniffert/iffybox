@@ -1,16 +1,18 @@
 from time import sleep
 import serial
 import irtoy
+from . import rxv
 from . import codes
 
 
 class Remote:
-    SLEEP_DUR = 0.3
+    SLEEP_DUR = 0.2
     SERIAL_DEVICE = '/dev/cu.usbmodem00000001'
 
     def __init__(self):
         self.device = serial.Serial(self.SERIAL_DEVICE)
         self.toy = irtoy.IrToy(self.device)
+        self.receiver = rxv.RXV()
 
     def __exit__(self):
         self.device.close()
@@ -41,36 +43,28 @@ class Remote:
         ])
 
     def receiver_mute(self):
-        self.send(codes.RECEIVER_MUTE)
+        mute_state = self.receiver.mute
+        if mute_state == 'Off':
+            self.receiver.mute = 'On'
+        else:
+            self.receiver.mute = 'Off'
 
     def receiver_vol_up(self):
-        self.send([
-            codes.RECEIVER_VOL_UP,
-            codes.RECEIVER_VOL_UP,
-            codes.RECEIVER_VOL_UP,
-            codes.RECEIVER_VOL_UP,
-            codes.RECEIVER_VOL_UP,
-            codes.RECEIVER_VOL_UP
-        ])
+        current_volume = self.receiver.volume
+        self.receiver.volume = current_volume + 1
 
     def receiver_vol_down(self):
-        self.send([
-            codes.RECEIVER_VOL_DOWN,
-            codes.RECEIVER_VOL_DOWN,
-            codes.RECEIVER_VOL_DOWN,
-            codes.RECEIVER_VOL_DOWN,
-            codes.RECEIVER_VOL_DOWN,
-            codes.RECEIVER_VOL_DOWN
-        ])
+        current_volume = self.receiver.volume
+        self.receiver.volume = current_volume - 1
 
     def receiver_input_tv(self):
-        self.send(codes.RECEIVER_TV)
+        self.receiver.input = 'AV1'
 
     def receiver_input_ps3(self):
-        self.send(codes.RECEIVER_HDMI_1)
+        self.receiver.input = 'HDMI1'
 
     def receiver_input_mac(self):
-        self.send(codes.RECEIVER_HDMI_2)
+        self.receiver.input = 'HDMI2'
 
     def receiver_input_chromecast(self):
-        self.send(codes.RECEIVER_HDMI_3)
+        self.receiver.input = 'HDMI3'
