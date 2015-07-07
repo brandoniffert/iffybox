@@ -12,22 +12,19 @@ var Iffybox = (function (request) {
   var setupRemote = function () {
     var $form = $('.form-remote');
 
-    $form.on('click', 'button', function (e) {
-      var $button = $(this);
-      var action = $button.data('action');
+    $form.addEventListener('click', 'button', function (e) {
+      var $button = this;
+      var action = $button.getAttribute('data-action');
 
-      $.ajax({
-        type: 'post',
-        url: $form.prop('action'),
-        data: { action: action },
-        dataType: 'json',
-        beforeSend: function () {
-          $button.button('loading');
-        },
-        complete: function () {
-          $button.button('reset');
-        }
-      });
+      $button.setAttribute('disabled', true);
+
+      request
+        .post($form.getAttribute('action'))
+        .type('form')
+        .send({ action: action })
+        .end(function (err, res) {
+          $button.removeAttribute('disabled');
+        });
     });
   };
 
@@ -55,7 +52,7 @@ var Iffybox = (function (request) {
 
   self.init = function () {
     bindUI();
-    // setupRemote();
+    setupRemote();
     setupSay();
   };
 
