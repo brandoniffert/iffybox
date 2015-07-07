@@ -1,3 +1,4 @@
+import os
 import subprocess
 from .remote.remote import Remote
 from flask import Flask, render_template, request, jsonify
@@ -40,7 +41,7 @@ def remote():
 @app.route('/say', methods=['POST'])
 def say():
     subprocess.check_call(['/usr/local/Cellar/switchaudio-osx/1.0.0/bin/SwitchAudioSource',
-                           '-s', 'Built-in Output'])
+                           '-s', 'Built-in Output'], stdout=open(os.devnull, 'wb'))
     message = request.form.get('message')
     voice = request.form.get('voice')
     subprocess.check_call(['say', '-v', voice, message])
