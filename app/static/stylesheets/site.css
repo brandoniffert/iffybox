@@ -2,31 +2,51 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-.btn-reload {
-  position: relative;
+.mdl-layout__header-row {
+  padding-left: 16px;
+}
+
+.mdl-card {
+  min-height: 0;
+  overflow: visible;
+}
+
+.mdl-card__actions .mdl-button {
+  min-width: 0;
+  width: 100%;
+}
+
+.mdl-textfield {
+  width: 100%;
+}
+
+.mdl-card__menu {
+  right: 8px;
   top: 8px;
 }
 
-form input {
-  font-size: 16px;
+.has-radio {
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
-.tab-content {
-  padding: 20px 0;
+.has-radio .mdl-menu__item {
+  height: auto;
 }
 
-@media screen and (max-width: 768px) {
-  .btn-reload {
-    right: 15px;
-  }
-
-  .panel-xs-stacked > .row > .col-sm-6:last-child .form-group {
-    margin-bottom: 0;
-  }
+.has-radio label {
+  display: block;
+  font-size: 14px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
-@media screen and (min-width: 768px) {
-  .panel-xs-stacked .form-group {
-    margin-bottom: 0;
-  }
+.has-radio .mdl-radio__outer-circle {
+  top: 9px;
+}
+.has-radio .mdl-radio__inner-circle {
+  top: 13px;
+}
+.has-radio .mdl-radio__ripple-container {
+  top: -4px;
 }

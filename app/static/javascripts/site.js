@@ -1,14 +1,10 @@
-var Iffybox = (function ($) {
+var Iffybox = (function (request) {
 
   var self = {};
 
   var bindUI = function () {
-    $('.site-tabs a').on('click', function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    $('.btn-reload').on('click', function (e) {
+    document.querySelector('.btn-reload').addEventListener('click', function (e) {
+      console.log('here');
       document.location.reload(true);
     });
   };
@@ -36,39 +32,38 @@ var Iffybox = (function ($) {
   };
 
   var setupSay = function () {
-    var $form = $('.form-say');
-    var $submit = $form.find('button');
+    var $form = document.querySelector('.form-say');
+    var $submit = $form.querySelector('button[type=submit]');
 
-    $form.on('submit', function (e) {
+    $form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      $.ajax({
-        type: 'post',
-        url: $form.prop('action'),
-        data: $form.serialize(),
-        dataType: 'json',
-        beforeSend: function () {
-          $submit.button('loading');
-        },
-        complete: function () {
-          $form.find('input').val('');
-          $submit.button('reset');
-        }
-      });
+      if ($form.message.value === '') return;
+
+      $submit.setAttribute('disabled', true);
+
+      request
+        .post($form.getAttribute('action'))
+        .type('form')
+        .send({ message: $form.message.value, voice: $form.voice.value })
+        .end(function (err, res) {
+          $form.querySelector('input[type=text]').value = '';
+          $submit.removeAttribute('disabled');
+        });
     });
   };
 
   self.init = function () {
     bindUI();
-    setupRemote();
+    // setupRemote();
     setupSay();
   };
 
   return self;
 
-})(window.jQuery);
+})(window.superagent);
 
-$(function () {
+window.onload = function () {
   FastClick.attach(document.body);
   Iffybox.init();
-});
+};

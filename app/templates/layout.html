@@ -27,30 +27,29 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <link href="/static/images/startup.jpg" rel="apple-touch-startup-image">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.blue-indigo.min.css" /> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="/static/stylesheets/site.css">
 </head>
 <body>
 
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header pull-left">
-        <span class="navbar-brand">IFFYBOX</span>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">IFFYBOX</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+          <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect btn-reload" type="button"><i class="material-icons">refresh</i></button>
+        </nav>
       </div>
+    </header>
 
-      <div class="navbar-header pull-right">
-        <button class="btn btn-default btn-reload" type="button"><span class="glyphicon glyphicon-repeat"></span></button>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
     {% block content %}{% endblock %}
   </div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
   <script src="/static/javascripts/site.js"></script>
 </body>
 </html>
