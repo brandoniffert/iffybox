@@ -13,7 +13,7 @@ var Iffybox = (function (request) {
 
     $form.addEventListener('click', function (e) {
       if (e.target && e.target.parentNode.nodeName === 'BUTTON') {
-        var $button = this;
+        var $button = this.parentNode;
         var action = $button.getAttribute('data-action');
 
         $button.setAttribute('disabled', true);
