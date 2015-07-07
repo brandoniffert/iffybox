@@ -1,4 +1,5 @@
 import requests
+import subprocess
 import xml.etree.ElementTree as ET
 from collections import namedtuple
 
@@ -56,6 +57,9 @@ class RXV(object):
 
     @input.setter
     def input(self, input_name):
+        mac_audio_out = 'HDMI' if input_name == 'HDMI2' else 'Built-in Output'
+        subprocess.check_call(['/usr/local/Cellar/switchaudio-osx/1.0.0/bin/SwitchAudioSource', '-s',
+                               mac_audio_out])
         request_text = Input.format(input_name=input_name)
         self._request('PUT', request_text)
 
