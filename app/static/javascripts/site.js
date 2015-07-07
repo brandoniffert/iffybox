@@ -4,13 +4,12 @@ var Iffybox = (function (request) {
 
   var bindUI = function () {
     document.querySelector('.btn-reload').addEventListener('click', function (e) {
-      console.log('here');
       document.location.reload(true);
     });
   };
 
   var setupRemote = function () {
-    var $form = $('.form-remote');
+    var $form = document.querySelector('.form-remote');
 
     $form.addEventListener('click', 'button', function (e) {
       var $button = this;
