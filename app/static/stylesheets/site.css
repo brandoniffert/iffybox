@@ -15,6 +15,11 @@ input {
   overflow: visible;
 }
 
+.mdl-card__supporting-text {
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .mdl-card__actions .mdl-button {
   min-width: 0;
   width: 100%;
