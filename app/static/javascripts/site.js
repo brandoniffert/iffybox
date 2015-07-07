@@ -11,19 +11,21 @@ var Iffybox = (function (request) {
   var setupRemote = function () {
     var $form = document.querySelector('.form-remote');
 
-    $form.addEventListener('click', 'button', function (e) {
-      var $button = this;
-      var action = $button.getAttribute('data-action');
+    $form.addEventListener('click', function (e) {
+      if (e.target && e.target.parentNode.nodeName === 'BUTTON') {
+        var $button = this;
+        var action = $button.getAttribute('data-action');
 
-      $button.setAttribute('disabled', true);
+        $button.setAttribute('disabled', true);
 
-      request
-        .post($form.getAttribute('action'))
-        .type('form')
-        .send({ action: action })
-        .end(function (err, res) {
-          $button.removeAttribute('disabled');
-        });
+        request
+          .post($form.getAttribute('action'))
+          .type('form')
+          .send({ action: action })
+          .end(function (err, res) {
+            $button.removeAttribute('disabled');
+          });
+      }
     });
   };
 
