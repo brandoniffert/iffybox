@@ -1,6 +1,7 @@
 from time import sleep
 import serial
 import irtoy
+from app.speaker import Speaker
 from .rxv import RXV
 from . import codes
 
@@ -11,8 +12,13 @@ class Remote:
     SERIAL_DEVICE = '/dev/cu.usbmodem00000001'
 
     def __init__(self):
-        self.device = serial.Serial(self.SERIAL_DEVICE)
-        self.toy = irtoy.IrToy(self.device)
+        speaker = Speaker()
+        try:
+            self.device = serial.Serial(self.SERIAL_DEVICE)
+            self.toy = irtoy.IrToy(self.device)
+        except:
+            speaker.say("Can't connect to IR Toy!")
+
         self.receiver = RXV()
 
     def __exit__(self):
