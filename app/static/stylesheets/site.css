@@ -26,8 +26,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-input {
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=url],
+input[type=search] {
+  appearance: none;
+  -moz-appearance: none;
   -webkit-appearance: none;
+
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
 }
 
 main {
