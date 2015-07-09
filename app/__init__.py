@@ -33,6 +33,10 @@ def remote():
         remote.receiver_vol_up()
     elif action == 'receiver-vol-down':
         remote.receiver_vol_down()
+    elif action == 'tv-channel-nbc':
+        remote.tv_channel_nbc()
+    elif action == 'tv-channel-abc':
+        remote.tv_channel_abc()
 
     return jsonify(success=True)
 
