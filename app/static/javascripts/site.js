@@ -40,10 +40,12 @@ var Iffybox = (function (request) {
 
       $submit.setAttribute('disabled', true);
 
+      var voice = $form.querySelector('input[name=voice]:checked').value;
+
       request
         .post($form.getAttribute('action'))
         .type('form')
-        .send({ message: $form.message.value, voice: $form.voice.value })
+        .send({ message: $form.message.value, voice: voice })
         .end(function (err, res) {
           $form.querySelector('input[type=text]').value = '';
           $submit.removeAttribute('disabled');
