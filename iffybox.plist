@@ -10,9 +10,12 @@
   <string>IFFYBOX</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/iffybox/iffybox/venv/bin/uwsgi</string>
-    <string>--ini</string>
-    <string>/Users/iffybox/iffybox/iffybox.ini</string>
+    <string>/Users/iffybox/iffybox/venv/bin/gunicorn</string>
+    <string>-w</string>
+    <string>4</string>
+    <string>-b</string>
+    <string>127.0.0.1:9090</string>
+    <string>app:app</string>
   </array>
   <key>WorkingDirectory</key>
   <string>/Users/iffybox/iffybox</string>
