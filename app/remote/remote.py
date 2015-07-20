@@ -1,7 +1,7 @@
 from time import sleep
 import serial
 import irtoy
-from app.speaker import Speaker
+import app.speaker as speaker
 from .rxv import RXV
 from . import codes
 
@@ -9,10 +9,9 @@ from . import codes
 class Remote:
     SLEEP_DUR = 0.2
     VOL_STEP = 3
-    SERIAL_DEVICE = '/dev/cu.usbmodem00000001'
+    SERIAL_DEVICE = '/dev/ttyACM0'
 
     def __init__(self):
-        speaker = Speaker()
         try:
             self.device = serial.Serial(self.SERIAL_DEVICE)
             self.toy = irtoy.IrToy(self.device)

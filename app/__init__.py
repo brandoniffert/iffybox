@@ -1,5 +1,5 @@
 from .remote.remote import Remote
-from .speaker import Speaker
+import app.speaker as speaker
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -43,9 +43,7 @@ def remote():
 
 @app.route('/say', methods=['POST'])
 def say():
-    speaker = Speaker()
     message = request.form.get('message')
-    voice = request.form.get('voice')
-    speaker.say(message, voice)
+    speaker.say(message)
 
     return jsonify(success=True)
