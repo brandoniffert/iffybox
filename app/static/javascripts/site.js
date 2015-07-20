@@ -12,8 +12,8 @@ var Iffybox = (function (request) {
     var $form = document.querySelector('.form-remote');
 
     $form.addEventListener('click', function (e) {
-      if (e.target && e.target.getAttribute('data-action')) {
-        var action = e.target.getAttribute('data-action');
+      if (e.target && (e.target.getAttribute('data-action') || e.target.parentNode.getAttribute('data-action'))) {
+        var action = e.target.getAttribute('data-action') || e.target.parentNode.getAttribute('data-action');
 
         request
           .post($form.getAttribute('action'))
