@@ -1,4 +1,3 @@
-from time import sleep
 import serial
 import irtoy
 import app.speaker as speaker
@@ -7,7 +6,6 @@ from . import codes
 
 
 class Remote:
-    SLEEP_DUR = 0.2
     VOL_STEP = 3
     SERIAL_DEVICE = '/dev/ttyACM0'
 
@@ -34,7 +32,6 @@ class Remote:
         if any(isinstance(el, list) for el in codes):
             for code in codes:
                 self._transmit(code)
-                sleep(self.SLEEP_DUR)
         else:
             self._transmit(codes)
 
