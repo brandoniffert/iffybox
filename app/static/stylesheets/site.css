@@ -72,28 +72,32 @@ main {
   top: 8px;
 }
 
-.has-radio {
+.has-options {
+  z-index: 2;
+}
+
+.has-options .mdl-menu {
   max-height: 300px;
   overflow-y: scroll;
 }
 
-.has-radio .mdl-menu__item {
+.has-options .mdl-menu__item {
   height: auto;
 }
 
-.has-radio label {
+.has-options .mdl-menu label {
   display: block;
   font-size: 14px;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
-.has-radio .mdl-radio__outer-circle {
+.has-options .mdl-radio__outer-circle {
   top: 9px;
 }
-.has-radio .mdl-radio__inner-circle {
+.has-options .mdl-radio__inner-circle {
   top: 13px;
 }
-.has-radio .mdl-radio__ripple-container {
+.has-options .mdl-radio__ripple-container {
   top: -4px;
 }
