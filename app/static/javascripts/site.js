@@ -12,19 +12,14 @@ var Iffybox = (function (request) {
     var $form = document.querySelector('.form-remote');
 
     $form.addEventListener('click', function (e) {
-      if (e.target && e.target.parentNode.nodeName === 'BUTTON') {
-        var $button = e.target.parentNode;
-        var action = $button.getAttribute('data-action');
-
-        $button.setAttribute('disabled', true);
+      if (e.target && e.target.getAttribute('data-action')) {
+        var action = e.target.getAttribute('data-action');
 
         request
           .post($form.getAttribute('action'))
           .type('form')
           .send({ action: action })
-          .end(function (err, res) {
-            $button.removeAttribute('disabled');
-          });
+          .end();
       }
     });
   };

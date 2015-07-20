@@ -37,6 +37,14 @@ def remote():
         remote.tv_channel_nbc()
     elif action == 'tv-channel-abc':
         remote.tv_channel_abc()
+    elif action == 'tv-channel-fox':
+        remote.tv_channel_fox()
+    elif action == 'tv-channel-cbs':
+        remote.tv_channel_cbs()
+    elif action == 'tv-channel-amc':
+        remote.tv_channel_amc()
+    elif action == 'tv-channel-fx':
+        remote.tv_channel_fx()
 
     return jsonify(success=True)
 

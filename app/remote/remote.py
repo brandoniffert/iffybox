@@ -59,6 +59,35 @@ class Remote:
             codes.TV_CHAN_UP
         ])
 
+    def tv_channel_fox(self):
+        self.send([
+            codes.TV_NUM_6,
+            codes.TV_NUM_8,
+            codes.TV_OK,
+            codes.TV_CHAN_UP
+        ])
+
+    def tv_channel_cbs(self):
+        self.send([
+            codes.TV_NUM_5,
+            codes.TV_OK,
+            codes.TV_CHAN_UP
+        ])
+
+    def tv_channel_amc(self):
+        self.send([
+            codes.TV_NUM_6,
+            codes.TV_NUM_7,
+            codes.TV_OK
+        ])
+
+    def tv_channel_fx(self):
+        self.send([
+            codes.TV_NUM_2,
+            codes.TV_NUM_1,
+            codes.TV_OK
+        ])
+
     def receiver_mute(self):
         mute_state = self.receiver.mute
         if mute_state == 'Off':
